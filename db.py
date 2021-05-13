@@ -9,7 +9,7 @@ if __name__=="__main__":
     noL = []
     with open("./no.list","r") as f:
         noL = [i[:8] for i in f.readlines()]
-    workL = set([i[:8] for i in list(os.walk("./data"))[0][2]]) - set([i[0] for i in cur.execute("select id from HighSchool;").fetchall()])-set(noL)-set([i[0] for i in cur.execute("select id from JuniorSchool;").fetchall()])
+    workL = set([i[:8] for i in list(os.walk("./data"))[0][2]]) - set([i[0] for i in cur.execute("select id from HighSchool;").fetchall()])-set(noL)-set([i[0] for i in cur.execute("select id from JuniorSchool;").fetchall()])-set([i[0] for i in cur.execute("select id from SorPSchool;").fetchall()])
     print(len(workL))
     for i in workL:
         print(i)
